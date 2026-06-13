@@ -1,0 +1,236 @@
+/* file: style.css */
+/* Единый файл дизайна для всего сайта F1rst */
+/* Подключается ко всем HTML-страницам */
+
+/* ---------- RESET ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ---------- БАЗА ---------- */
+body {
+    background: #000000;
+    font-family: 'Poppins', 'Segoe UI', system-ui, -apple-system, 'Inter', sans-serif;
+    color: #ffffff;
+    scroll-behavior: smooth;
+}
+
+/* ---------- НАВИГАЦИЯ (СТИКЕР) ---------- */
+.navbar {
+    position: sticky;
+    top: 0;
+    background: rgba(0, 0, 0, 0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 2px solid #e30613;
+    padding: 0.9rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    background: linear-gradient(135deg, #ffffff, #e30613);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 6px rgba(227, 6, 19, 0.3);
+}
+
+.logo span {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #e30613;
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+}
+
+.hamburger {
+    display: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #ffffff;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    align-items: center;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: #f0f0f0;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: 0.2s;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 4px;
+}
+
+.nav-links li a:hover {
+    color: #e30613;
+    border-bottom-color: #e30613;
+}
+
+/* ---------- ГЕРОЙ (HOMEPAGE) ---------- */
+.hero {
+    min-height: 85vh;
+    background: linear-gradient(105deg, #000000 30%, rgba(227, 6, 19, 0.15)), url('https://placehold.co/1400x800/111111/e30613?text=F1+GRID') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    padding: 0 8%;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 1.1;
+}
+
+.hero .red {
+    color: #e30613;
+}
+
+/* ---------- КНОПКИ ---------- */
+.btn {
+    background: #e30613;
+    border: none;
+    padding: 12px 32px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.2s;
+    color: white;
+    border-radius: 0px;
+    text-transform: uppercase;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background: #ff2a2a;
+    transform: scale(1.02);
+    box-shadow: 0 0 15px rgba(227, 6, 19, 0.6);
+}
+
+.btn-small {
+    padding: 6px 18px;
+    font-size: 12px;
+}
+
+/* ---------- СЕКЦИИ И КАРТОЧКИ ТОВАРОВ ---------- */
+.section {
+    padding: 4rem 5% 2rem;
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    border-left: 5px solid #e30613;
+    padding-left: 1rem;
+    margin-bottom: 2rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 2rem;
+}
+
+.card {
+    background: #0e0e0e;
+    border: 1px solid #222;
+    padding: 1rem;
+    transition: transform 0.2s, border 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    border-color: #e30613;
+}
+
+.card-img {
+    height: 200px;
+    background: #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: #e30613;
+    margin-bottom: 1rem;
+}
+
+.card h3 {
+    margin: 0.5rem 0;
+}
+
+.price {
+    color: #e30613;
+    font-weight: bold;
+    margin: 0.5rem 0;
+}
+
+/* ---------- БАННЕР С ЦИТАТОЙ ---------- */
+.quote-banner {
+    background: #0a0a0a;
+    padding: 2rem 5%;
+    border-left: 6px solid #e30613;
+    margin: 2rem 5% 0;
+    font-style: italic;
+    font-size: 1.3rem;
+}
+
+/* ---------- ФУТЕР ---------- */
+.footer {
+    background: #050505;
+    padding: 2rem 5%;
+    text-align: center;
+    border-top: 1px solid #222;
+    margin-top: 3rem;
+}
+
+.footer a {
+    color: #e30613;
+    text-decoration: none;
+}
+
+/* ---------- АДАПТИВ (МОБИЛЬНЫЕ) ---------- */
+@media (max-width: 800px) {
+    .hamburger {
+        display: block;
+    }
+    .nav-links {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        background: #000000dd;
+        backdrop-filter: blur(20px);
+        width: 70%;
+        height: 100vh;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 2rem;
+        gap: 1.8rem;
+        transition: 0.3s;
+        border-right: 2px solid #e30613;
+    }
+    .nav-links.active {
+        left: 0;
+    }
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    .section-title {
+        font-size: 1.8rem;
+    }
+}
