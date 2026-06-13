@@ -1,493 +1,74 @@
+<!-- 
+  СКЕЛЕТ МНОГОСТРАНИЧНОГО САЙТА F1RST
+  Страницы: Главная, Футболки, Толстовки, Кепки, Аксессуары, Фан-боксы, Контакты/Доставка/Оплата, Блог.
+  Каждая страница категории имеет уникальную цитату и набор товаров.
+-->
+
+<!-- file: index.html -->
 <!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>F1rst — дерзкий F1 мерч</title>
-  <!-- Font Awesome Icons (v6 free) -->
+  <title>F1rst | Дерзкий F1 мерч</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      background-color: #000000;
-      font-family: 'Poppins', 'Segoe UI', system-ui, -apple-system, 'Inter', sans-serif;
-      color: #ffffff;
-      scroll-behavior: smooth;
-    }
-
-    /* дерзкий гоночный градиент */
-    .bg-race {
-      background: radial-gradient(circle at 20% 30%, #0a0a0a, #000000);
-    }
-
-    /* навбар */
-    .navbar {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(0, 0, 0, 0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 2px solid #e30613;
-      padding: 0.8rem 5%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .logo {
-      font-size: 2rem;
-      font-weight: 800;
-      letter-spacing: -1px;
-      background: linear-gradient(135deg, #ffffff, #e30613);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      text-shadow: 0 0 6px rgba(227, 6, 19, 0.3);
-    }
-
-    .logo span {
-      font-size: 1.1rem;
-      font-weight: 400;
-      background: none;
-      -webkit-background-clip: unset;
-      background-clip: unset;
-      color: #e30613;
-    }
-
-    /* мобильное меню бургер */
-    .hamburger {
-      display: none;
-      font-size: 1.8rem;
-      cursor: pointer;
-      color: #fff;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-      align-items: center;
-    }
-
-    .nav-links li a {
-      text-decoration: none;
-      color: #f0f0f0;
-      font-weight: 600;
-      font-size: 1rem;
-      transition: 0.2s;
-      letter-spacing: 0.5px;
-      border-bottom: 2px solid transparent;
-      padding-bottom: 4px;
-    }
-
-    .nav-links li a:hover {
-      color: #e30613;
-      border-bottom-color: #e30613;
-    }
-
-    /* hero секция */
-    .hero {
-      min-height: 85vh;
-      background: linear-gradient(105deg, #000000 40%, rgba(227, 6, 19, 0.15)), url('https://placehold.co/1400x800/111111/e30613?text=F1+GRID') center/cover no-repeat;
-      display: flex;
-      align-items: center;
-      padding: 0 8%;
-    }
-
-    .hero-content h1 {
-      font-size: 4rem;
-      font-weight: 800;
-      line-height: 1.1;
-    }
-
-    .hero-content .f1rst-big {
-      color: #e30613;
-      text-transform: uppercase;
-    }
-
-    .hero-content p {
-      font-size: 1.2rem;
-      max-width: 550px;
-      margin: 1rem 0 2rem;
-      color: #cccccc;
-    }
-
-    .btn-sharp {
-      background: #e30613;
-      border: none;
-      padding: 12px 32px;
-      font-weight: bold;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: 0.2s;
-      color: white;
-      border-radius: 0px;
-      text-transform: uppercase;
-      display: inline-block;
-    }
-
-    .btn-sharp:hover {
-      background: #ff2a2a;
-      transform: scale(1.02);
-      box-shadow: 0 0 15px rgba(227, 6, 19, 0.6);
-    }
-
-    /* категории */
-    .section-cat {
-      padding: 4rem 5% 3rem;
-    }
-
-    .section-title {
-      font-size: 2.5rem;
-      font-weight: 700;
-      border-left: 5px solid #e30613;
-      padding-left: 1rem;
-      margin-bottom: 2rem;
-    }
-
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-      gap: 2rem;
-    }
-
-    .product-card {
-      background: #0e0e0e;
-      border: 1px solid #222;
-      transition: transform 0.2s, border 0.2s;
-      padding: 1rem;
-    }
-
-    .product-card:hover {
-      transform: translateY(-6px);
-      border-color: #e30613;
-    }
-
-    .product-img {
-      background: #1a1a1a;
-      height: 240px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 3rem;
-      color: #e30613;
-      margin-bottom: 1rem;
-    }
-
-    .product-title {
-      font-weight: 700;
-      font-size: 1.2rem;
-    }
-
-    .product-price {
-      color: #e30613;
-      font-weight: bold;
-      margin-top: 0.5rem;
-    }
-
-    .exclusive-badge {
-      background: #e30613;
-      display: inline-block;
-      font-size: 0.7rem;
-      padding: 2px 8px;
-      margin-bottom: 8px;
-      font-weight: bold;
-    }
-
-    footer {
-      background: #050505;
-      padding: 2rem 5%;
-      margin-top: 2rem;
-      border-top: 1px solid #222;
-      text-align: center;
-    }
-
-    /* адаптивность */
-    @media (max-width: 800px) {
-      .hamburger {
-        display: block;
-      }
-      .nav-links {
-        position: fixed;
-        top: 70px;
-        left: -100%;
-        background: #000000e6;
-        backdrop-filter: blur(16px);
-        width: 70%;
-        height: 100vh;
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 2rem;
-        gap: 1.8rem;
-        transition: 0.3s;
-        border-right: 2px solid #e30613;
-      }
-      .nav-links.active {
-        left: 0;
-      }
-      .hero-content h1 {
-        font-size: 2.5rem;
-      }
-      .section-title {
-        font-size: 1.8rem;
-      }
-    }
-
-    a, button {
-      cursor: pointer;
-    }
-
-    .cart-icon {
-      background: #e30613;
-      padding: 6px 12px;
-      border-radius: 30px;
-      font-size: 0.85rem;
-      font-weight: bold;
-    }
-
-    /* чекбокс и эксклюзив */
-    .highlight {
-      color: #e30613;
-    }
+    * { margin:0; padding:0; box-sizing: border-box; }
+    body { background: #000000; font-family: 'Poppins', 'Segoe UI', sans-serif; color: #fff; scroll-behavior: smooth; }
+    .navbar { position: sticky; top:0; background: rgba(0,0,0,0.96); backdrop-filter: blur(12px); border-bottom: 2px solid #e30613; padding: 0.9rem 5%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; z-index: 1000; }
+    .logo { font-size: 2rem; font-weight: 800; background: linear-gradient(135deg, #fff, #e30613); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .logo span { font-size: 0.9rem; color: #e30613; }
+    .hamburger { display: none; font-size: 1.8rem; cursor: pointer; color: #fff; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+    .nav-links a { text-decoration: none; color: #f0f0f0; font-weight: 600; transition: 0.2s; font-size: 1rem; letter-spacing: 0.5px; border-bottom: 2px solid transparent; padding-bottom: 4px; }
+    .nav-links a:hover { color: #e30613; border-bottom-color: #e30613; }
+    .hero { min-height: 85vh; background: linear-gradient(105deg, #000000 30%, rgba(227,6,19,0.2)), url('https://placehold.co/1400x800/111/222?text=F1+GRID') center/cover; display: flex; align-items: center; padding: 0 8%; }
+    .hero h1 { font-size: 4rem; font-weight: 800; line-height: 1.1; }
+    .hero .red { color: #e30613; }
+    .btn { background: #e30613; border: none; padding: 12px 32px; font-weight: bold; cursor: pointer; color: white; display: inline-block; margin-top: 1rem; transition: 0.2s; text-decoration: none; border-radius: 0px; }
+    .btn:hover { background: #ff3b3b; transform: scale(1.02); box-shadow: 0 0 15px rgba(227,6,19,0.5); }
+    .section { padding: 4rem 5% 2rem; }
+    .section-title { font-size: 2rem; border-left: 5px solid #e30613; padding-left: 1rem; margin-bottom: 2rem; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px,1fr)); gap: 2rem; }
+    .card { background: #0e0e0e; border: 1px solid #222; padding: 1rem; transition: 0.2s; }
+    .card:hover { border-color: #e30613; transform: translateY(-6px); }
+    .card-img { height: 200px; background: #1a1a1a; display: flex; align-items: center; justify-content: center; font-size: 3rem; color: #e30613; margin-bottom: 1rem; }
+    .footer { background: #050505; padding: 2rem 5%; text-align: center; border-top: 1px solid #222; margin-top: 3rem; }
+    @media (max-width: 800px) { .hamburger { display: block; } .nav-links { position: fixed; top: 70px; left: -100%; background: #000000dd; backdrop-filter: blur(20px); width: 70%; height: 100vh; flex-direction: column; align-items: flex-start; padding: 2rem; gap: 1.5rem; transition: 0.3s; } .nav-links.active { left: 0; } .hero h1 { font-size: 2.5rem; } }
   </style>
 </head>
-<body class="bg-race">
-
-<!-- Navigation -->
+<body>
 <nav class="navbar">
   <div class="logo">F1rst<span>.store</span></div>
-  <div class="hamburger" id="hamburgerIcon">
-    <i class="fas fa-bars"></i>
-  </div>
+  <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
   <ul class="nav-links" id="navLinks">
-    <li><a href="#home">ГЛАВНАЯ</a></li>
-    <li><a href="#t-shirts">ФУТБОЛКИ</a></li>
-    <li><a href="#hoodies">ТОЛСТОВКИ</a></li>
-    <li><a href="#caps">КЕПКИ</a></li>
-    <li><a href="#accessories">АКСЕССУАРЫ</a></li>
-    <li><a href="#exclusive">ЭКСКЛЮЗИВ</a></li>
-    <li><a href="#contact"><i class="fas fa-shopping-cart"></i> КОНТАКТЫ</a></li>
+    <li><a href="index.html">ГЛАВНАЯ</a></li>
+    <li><a href="tshirts.html">ФУТБОЛКИ</a></li>
+    <li><a href="hoodies.html">ТОЛСТОВКИ</a></li>
+    <li><a href="caps.html">КЕПКИ</a></li>
+    <li><a href="accessories.html">АКСЕССУАРЫ</a></li>
+    <li><a href="fanboxes.html">FAN BOX</a></li>
+    <li><a href="info.html">ДОСТАВКА/ОПЛАТА</a></li>
+    <li><a href="blog.html">БЛОГ</a></li>
   </ul>
 </nav>
 
-<!-- Hero -->
-<section id="home" class="hero">
-  <div class="hero-content">
-    <h1>FIRST TO THE<br><span class="f1rst-big">GRID</span></h1>
-    <p>Официальный стиль Red Bull, Ferrari, McLaren. Fan boxes, лимитированные серии. Для тех, кто дышит F1.</p>
-    <button class="btn-sharp" onclick="alert('🔥 Дерзкая коллекция уже в пути! Оформляй предзаказ.')">КУПИТЬ МЕРЧ</button>
-  </div>
+<section class="hero">
+  <div><h1>FIRST TO THE<br><span class="red">GRID</span></h1>
+  <p>Официальный стиль Red Bull, Ferrari, McLaren. Лимитированные дропы. Фан-боксы, которых ты ждал.</p>
+  <a href="tshirts.html" class="btn">КУПИТЬ МЕРЧ →</a></div>
 </section>
 
-<!-- ФУТБОЛКИ -->
-<section id="t-shirts" class="section-cat">
-  <h2 class="section-title">⚡ ФУТБОЛКИ — DRIP OR CRASH</h2>
-  <div class="products-grid">
-    <div class="product-card">
-      <div class="product-img"><i class="fab fa-reddit-alien" style="font-size: 3rem;"></i></div>
-      <div class="product-title">RB20 TEAM EDITION</div>
-      <div class="product-price">2 490 ₽</div>
-      <button class="btn-sharp" style="margin-top:10px;padding:6px 16px;font-size:12px;">В КОРЗИНУ</button>
-    </div>
-    <div class="product-card">
-      <div class="product-img"><i class="fas fa-flag-checkered"></i></div>
-      <div class="product-title">SCUDERIA LEGACY</div>
-      <div class="product-price">2 390 ₽</div>
-      <button class="btn-sharp" style="margin-top:10px;padding:6px 16px;font-size:12px;">В КОРЗИНУ</button>
-    </div>
-    <div class="product-card">
-      <div class="product-img"><i class="fas fa-bolt"></i></div>
-      <div class="product-title">MAX1 VERSTAPPEN</div>
-      <div class="product-price">2 690 ₽</div>
-      <button class="btn-sharp" style="margin-top:10px;padding:6px 16px;font-size:12px;">В КОРЗИНУ</button>
-    </div>
-    <div class="product-card">
-      <div class="product-img"><i class="fas fa-car"></i></div>
-      <div class="product-title">MCL38 PAPAYA</div>
-      <div class="product-price">2 490 ₽</div>
-      <button class="btn-sharp" style="margin-top:10px;padding:6px 16px;font-size:12px;">В КОРЗИНУ</button>
-    </div>
+<section class="section">
+  <h2 class="section-title">🏁 ТВОЙ ВЫБОР</h2>
+  <div class="grid">
+    <div class="card"><div class="card-img"><i class="fas fa-tshirt"></i></div><h3>Футболки</h3><p>От 2 390₽</p><a href="tshirts.html" class="btn" style="padding:6px 18px; font-size:12px;">СМОТРЕТЬ</a></div>
+    <div class="card"><div class="card-img"><i class="fas fa-hoodie"></i></div><h3>Толстовки</h3><p>От 4 790₽</p><a href="hoodies.html" class="btn" style="padding:6px 18px; font-size:12px;">СМОТРЕТЬ</a></div>
+    <div class="card"><div class="card-img"><i class="fas fa-hat-cowboy"></i></div><h3>Кепки</h3><p>От 1 990₽</p><a href="caps.html" class="btn" style="padding:6px 18px; font-size:12px;">СМОТРЕТЬ</a></div>
+    <div class="card"><div class="card-img"><i class="fas fa-gift"></i></div><h3>Fan Box</h3><p>Лучший подарок</p><a href="fanboxes.html" class="btn" style="padding:6px 18px; font-size:12px;">ПОДРОБНЕЕ</a></div>
   </div>
 </section>
-
-<!-- ТОЛСТОВКИ -->
-<section id="hoodies" class="section-cat">
-  <h2 class="section-title">🔥 ТОЛСТОВКИ — PIT LANE ENERGY</h2>
-  <div class="products-grid">
-    <div class="product-card">
-      <div class="product-img"><i class="fas fa-tshirt" style="font-size: 3rem;"></i></div>
-      <div class="product-title">RED BULL RACING OVERSIZED</div>
-      <div class="product-price">4 990 ₽</div>
-      <button class="btn-sharp" style="margin-top:10px;padding:6px 16px;font-size:12px;">В КОРЗИНУ</button>
-    </div>
-    <div class="product-card">
-      <div class="product-img"><i class="fas fa-wind"></i></div>
-      <div class="product-title">FERRARI BLACKOUT</div>
-      <div class="product-price">5 290 ₽</div>
-      <button class="btn-sharp" style="margin-top:10px;padding:6px 16px;font-size:12px;">В КОРЗИНУ</button>
-    </div>
-    <div class="product-card">
-      <div class="product-img"><i class="fas fa-meteor"></i></div>
-      <div class="product-title">MERCEDES PETRONAS</div>
-      <div class="product-price">4 790 ₽</div>
-      <button class="btn-sharp" style="margin-top:10px;padding:6px 16px;font-size:12px;">В КОРЗИНУ</button>
-    </div>
-  </div>
-</section>
-
-<!-- КЕПКИ -->
-<section id="caps" class="section-cat">
-  <h2 class="section-title">🧢 КЕПКИ — AERO MODE</h2>
-  <div class="products-grid">
-    <div class="product-card">
-      <div class="product-img"><i class="fas fa-hat-cowboy"></i></div>
-      <div class="product-title">RB20 DAD HAT</div>
-      <div class="product-price">1 990 ₽</div>
-      <button class="btn-sharp" style="margin-top:10px;padding:6px 16px;font-size:12px;">В КОРЗИНУ</button>
-    </div>
-    <div class="product-card">
-      <div class="product-img"><i class="fas fa-baseball-ball"></i></div>
-      <div class="product-title">FERRARI SNAPBACK</div>
-      <div class="product-price">2 190 ₽</div>
-      <button class="btn-sharp" style="margin-top:10px;padding:6px 16px;font-size:12px;">В КОРЗИНУ</button>
-    </div>
-    <div class="product-card">
-      <div class="product-img"><i class="fas fa-crown"></i></div>
-      <div class="product-title">MCLAREN ELITE</div>
-      <div class="product-price">2 090 ₽</div>
-      <button class="btn-sharp" style="margin-top:10px;padding:6px 16px;font-size:12px;">В КОРЗИНУ</button>
-    </div>
-  </div>
-</section>
-
-<!-- АКСЕССУАРЫ -->
-<section id="accessories" class="section-cat">
-  <h2 class="section-title">🔧 АКСЕССУАРЫ — DETAILS MATTER</h2>
-  <div class="products-grid">
-    <div class="product-card">
-      <div class="product-img"><i class="fas fa-key"></i></div>
-      <div class="product-title">VERSTAPPEN 1 KEYCHAIN</div>
-      <div class="product-price">690 ₽</div>
-      <button class="btn-sharp" style="margin-top:10px;padding:6px 16px;font-size:12px;">В КОРЗИНУ</button>
-    </div>
-    <div class="product-card">
-      <div class="product-img"><i class="fas fa-mug-hot"></i></div>
-      <div class="product-title">TRACK LIMITS MUG</div>
-      <div class="product-price">1 190 ₽</div>
-      <button class="btn-sharp" style="margin-top:10px;padding:6px 16px;font-size:12px;">В КОРЗИНУ</button>
-    </div>
-    <div class="product-card">
-      <div class="product-img"><i class="fas fa-sticky-note"></i></div>
-      <div class="product-title">F1 STICKER PACK</div>
-      <div class="product-price">390 ₽</div>
-      <button class="btn-sharp" style="margin-top:10px;padding:6px 16px;font-size:12px;">В КОРЗИНУ</button>
-    </div>
-    <div class="product-card">
-      <div class="product-img"><i class="fas fa-gift"></i></div>
-      <div class="product-title">FAN BOX RED BULL</div>
-      <div class="product-price">4 990 ₽</div>
-      <button class="btn-sharp" style="margin-top:10px;padding:6px 16px;font-size:12px;">В КОРЗИНУ</button>
-    </div>
-  </div>
-</section>
-
-<!-- ЭКСКЛЮЗИВНЫЙ РАЗДЕЛ (лимитка) -->
-<section id="exclusive" class="section-cat">
-  <h2 class="section-title">🏁 ЭКСКЛЮЗИВ — LIMITED DROPS</h2>
-  <div class="products-grid">
-    <div class="product-card">
-      <div class="exclusive-badge">🔥 ONLY 100 PCS</div>
-      <div class="product-img"><i class="fas fa-crown" style="color:#ffcc00;"></i></div>
-      <div class="product-title">PADDOCK CLUB BOX #001</div>
-      <div class="product-price">7 990 ₽</div>
-      <button class="btn-sharp" style="margin-top:10px;padding:6px 16px;font-size:12px;">ПРЕДЗАКАЗ</button>
-    </div>
-    <div class="product-card">
-      <div class="exclusive-badge">MONACO GP</div>
-      <div class="product-img"><i class="fas fa-dice-d6"></i></div>
-      <div class="product-title">CASINO STREET HOODIE</div>
-      <div class="product-price">5 990 ₽</div>
-      <button class="btn-sharp" style="margin-top:10px;padding:6px 16px;font-size:12px;">ПРЕДЗАКАЗ</button>
-    </div>
-    <div class="product-card">
-      <div class="exclusive-badge">SIGNATURE</div>
-      <div class="product-img"><i class="fas fa-pen-fancy"></i></div>
-      <div class="product-title">MAX 1:1 REPLICA HELMET TAG</div>
-      <div class="product-price">3 490 ₽</div>
-      <button class="btn-sharp" style="margin-top:10px;padding:6px 16px;font-size:12px;">В КОРЗИНУ</button>
-    </div>
-  </div>
-</section>
-
-<!-- КОНТАКТЫ И ДОСТАВКА -->
-<section id="contact" class="section-cat" style="background:#0a0a0a; margin-top: 1rem;">
-  <h2 class="section-title">⚡ ПОЛНЫЙ ГАЗ — ДОСТАВКА И ОПЛАТА</h2>
-  <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: space-between;">
-    <div style="flex:1; min-width: 200px;">
-      <i class="fas fa-truck-fast" style="font-size: 2rem; color:#e30613;"></i>
-      <h3 style="margin: 10px 0;">СДЭК / Почта РФ</h3>
-      <p>Отправка по всей России от 350₽. Трек-номер сразу после отправки.</p>
-    </div>
-    <div style="flex:1; min-width: 200px;">
-      <i class="fab fa-telegram" style="font-size: 2rem; color:#e30613;"></i>
-      <h3 style="margin: 10px 0;">Оплата</h3>
-      <p>Карта, СБП, ЮKassa. Быстро и безопасно.</p>
-    </div>
-    <div style="flex:1; min-width: 200px;">
-      <i class="fas fa-box-open" style="font-size: 2rem; color:#e30613;"></i>
-      <h3 style="margin: 10px 0;">Fan Box подписка</h3>
-      <p>Ежемесячный сюрприз от F1rst — первый бокс со скидкой 20%.</p>
-    </div>
-  </div>
-  <div style="margin-top: 2rem; background: #111; padding: 1.5rem;">
-    <p><strong>Instagram:</strong> @f1rst.shop  |  <strong>Telegram:</strong> t.me/f1rst_merch  |  <strong>Почта:</strong> track@f1rst.store</p>
-    <p style="font-size: 0.8rem; margin-top: 1rem;">© 2026 F1rst — первый F1 мерч в РФ. Все права защищены.</p>
-  </div>
-</section>
-
-<footer>
-  <p style="letter-spacing: 2px;">#F1RST | ГАЗ В ПОЛ | НЕ ОСТАНОВИМСЯ</p>
-</footer>
-
-<script>
-  // бургер-меню
-  const hamburger = document.getElementById('hamburgerIcon');
-  const navLinks = document.getElementById('navLinks');
-
-  hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-  });
-
-  // Закрыть меню при клике на ссылку
-  document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-      navLinks.classList.remove('active');
-    });
-  });
-
-  // Добавляем маленький эффект "корзина" для кнопок, чтобы показать интерактив
-  const cartButtons = document.querySelectorAll('.product-card .btn-sharp');
-  cartButtons.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      const productCard = btn.closest('.product-card');
-      const productName = productCard.querySelector('.product-title')?.innerText || 'товар';
-      alert(`🔥 ${productName} добавлен в корзину! Оформите заказ через корзину или свяжитесь с нами в Telegram.`);
-    });
-  });
-  // дополнительная кнопка hero
-  const heroBtn = document.querySelector('.hero .btn-sharp');
-  if(heroBtn) {
-    heroBtn.addEventListener('click', () => {
-      alert('Гоночная коллекция 2026 уже близко! Переходи в разделы.');
-    });
-  }
-</script>
+<footer class="footer"><p>© 2026 F1rst — Дерзкий F1 мерч | <a href="info.html" style="color:#e30613;">Доставка и оплата</a></p></footer>
+<script>const hamburger=document.getElementById('hamburger'),navLinks=document.getElementById('navLinks');hamburger?.addEventListener('click',()=>navLinks.classList.toggle('active'));document.querySelectorAll('.nav-links a').forEach(link=>link.addEventListener('click',()=>navLinks.classList.remove('active')));</script>
 </body>
 </html>
